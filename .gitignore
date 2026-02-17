@@ -1,0 +1,38 @@
+# Virtual Environment
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# Model files
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# Whisper / Transformers cache
+.cache/
+huggingface/
+whisper/
+
+# Uploaded videos
+backend/uploads/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

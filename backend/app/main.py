@@ -1,6 +1,9 @@
 from fastapi import FastAPI, UploadFile, File
 import shutil
 import os
+from app.ml.video_processor import analyze_video
+from app.ml.audio_processor import analyze_audio
+
 from datetime import datetime
 
 app = FastAPI(
@@ -31,8 +34,11 @@ async def upload_interview(video: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(video.file, buffer)
 
+    analysis_result = analyze_video(file_path)
+    audio_result = analyze_audio(file_path)
     return {
-        "filename": video.filename,
-        "saved_path": file_path,
-        "status": "uploaded successfully"
+    "filename": video.filename,
+    "saved_path": file_path,
+    "vision_analysis": analysis_result,
+    "audio_analysis": audio_result
     }
